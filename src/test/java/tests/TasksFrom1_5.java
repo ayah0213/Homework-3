@@ -79,14 +79,14 @@ public class TasksFrom1_5 extends TestBase {
 
     }
 
-    @Test(testName = "upload file", description = "https://practice-cybertekschool.herokuapp.com/")
-    public void testCase7() throws InterruptedException {
-        FileUpload_Test7 form = new FileUpload_Test7();
-        form.goToUploadFileMethod();
-        form.clickOnchooseFileButton();
-        form.fileSubmitMethod();
-        form.fileUplMessageMethod();
+    @Test(testName = "Test Case #7", priority = 7, description = "https://practice-cybertekschool.herokuapp.com/")
+    public void task7() throws InterruptedException {
+        FileUpload_Test7 fileUploadPage = new   FileUpload_Test7();
+        fileUploadPage.clickOnFileUploadLink();
+        fileUploadPage.UploadFile();
+        fileUploadPage.clickUploadFileButtonAndVerifyTextAndNameFileTextIsDisplayed();
     }
 
 
-   }
+
+}

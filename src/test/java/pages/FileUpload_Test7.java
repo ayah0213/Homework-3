@@ -6,41 +6,52 @@ import org.testng.Assert;
 
 public class FileUpload_Test7 extends PageBase {
 
+    // when you make variable or elements anything private it means
+    // ENCAPSULATION
+
     @FindBy(linkText = "File Upload")
-    private WebElement goToFileUpload;
+    private WebElement fileUploadLinkElement;
 
     @FindBy(id = "file-upload")
-    private WebElement fileUPLOAD;
+    private WebElement chooseFileElement;
 
-    @FindBy(id = "file-upload")
-    private WebElement fileSubmitElement;
+    @FindBy(id = "file-submit")
+    private WebElement uploadButtonElement;
 
-    @FindBy(tagName = "File Uploaded!")
-    private WebElement fileUpploadedMsgElement;
+    @FindBy(tagName = "h3")
+    private WebElement fileUploadedTextElement;
 
-    @FindBy(id = "uploaded-files ")
-    private WebElement dispalyedAmamzonMsg;
+    @FindBy(id = "uploaded-files")
+    private WebElement uploadedFileNameElement;
 
 
-    public void goToUploadFileMethod() {
-        goToFileUpload.click();
+    public void clickUploadFileButtonAndVerifyTextAndNameFileTextIsDisplayed() {
+        uploadButtonElement.click();
+        Assert.assertEquals(fileUploadedTextElement.getText(), "File Uploaded!");
+        // when on the requirement it is asking is displayed we use AssertTrue or AssertFalse
+        Assert.assertTrue(uploadedFileNameElement.isDisplayed());
+
+
+        /*// this one is one way of verifying text
+        if (fileUploadedTextElement.getText().equals("File Uploaded!")){
+            System.out.println("File Uploaded! is displayed");
+        } else {
+            System.out.println("File Uploaded! NOT displayed");
+        }
+        // output/result if it is displayed it is gonna show this text "File Uploaded! is displayed"*/
+
+    }
+
+    public void UploadFile() throws InterruptedException {
+        // I commented out this one because no need to click then send keys
+        // chooseFileElement.click();
+        Thread.sleep(3000);
+        chooseFileElement.sendKeys("C:\\Users\\Ayah\\Desktop\\TMmap.txt");
+
     }
 
 
-    public void fileSubmitMethod() {
-        fileSubmitElement.click();
-    }
-
-
-    public void clickOnchooseFileButton() {
-        fileUPLOAD.click();
-        fileUPLOAD.sendKeys("C:\\Users\\Ayah\\Pictures\\Amazon.txt");
-
-    }
-
-    public void fileUplMessageMethod() {
-        Assert.assertEquals(fileUpploadedMsgElement.getText(), "File Uploaded!");
-        Assert.assertTrue(dispalyedAmamzonMsg.isDisplayed());
-
+    public void clickOnFileUploadLink() {
+        fileUploadLinkElement.click();
     }
 }
